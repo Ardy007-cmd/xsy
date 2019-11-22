@@ -1,28 +1,37 @@
 ---
-html: 和特摸了
-title: 我的第一篇博客
-zhaiyao: 123456789
+layout: common
+
 ---
-<h1>文章标题： {{page.title}}！</h1>
-<h1>{{page.html}}</h1>
 
+<!-- Main Content -->
 
-<!-- 过滤器 -->
-<h4>{{page.zhaiyao}}</h4>
-<!-- 12... -->
-<h4>{{page.zhaiyao | truncate:5,'*'}}</h4>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+      {% for post in site.posts %}
+        <div class="post-preview">
+          <a href="{{site.baseurl}}{{post.url}}">
+            <h2 class="post-title">
+              {{post.title}}
+            </h2>
+            <h3 class="post-subtitle">
+              {{post.subheading|truncate:100}}
+            </h3>
+          </a>
+          <p class="post-meta">Posted by
+            <a href="#">
+            {{post.author|default:site.author}}</a>
+            {{post.date|date_to_long_string}}</p>
+        </div>
+        <hr>
+        {% endfor %}
 
-{{ '<a href="">123</a>' }}
-{{ '<a href="">123</a>' | strip_html }}
+        <!-- Pager -->
+        <div class="clearfix">
+          <a class="btn btn-primary float-right" href="#">下一页 &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </div>
 
-<!-- 输出_config.yml中的数据 -->
-<h1>
-我今年{{site.age}}岁了。。。。
-</h1>
-
-<!-- 将时间格式化为年月日 时分秒 -->
-<h1>{{site.time | date:'%Y-%m-%d %H:%M:%S'}}</h1>
-<h6>name: {{page.name}}</h6>
-
-site
-page
+  <hr>

@@ -1,2 +1,4 @@
 baseurl: /xsy
 author: Ardy
+paginate: 4
+plugins: [jekyll-paginate]
